@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Corona - SY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/bootstrap-rtl.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Almarai&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loader">
+        <div class="row no-gutters justify-content-center align-items-center">
+            <span class="spinner fa-spin"></span>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-purple-inverse-direction rtl">
+        <a class="navbar-brand" href="#">كوفيد-19</a>
+    </nav>
+    <h1 id="selectedCountryName" class="text-c-purple text-center my-5">Syria</h1>
+    <section>
+        <div class="summary rtl">
+            <div class="row custom-row">
+                <div class="col-md-3">
+                    <div class="my-2 my-md-0 card bg-c-blue order-card">
+                        <div class="card-body">
+                            <div class="text-white row no-gutters align-items-center">
+                                <h1 class="mx-2"><i class="fa fa-info-circle"></i></h1>
+                                <h6>إجمالي الإصابات </h6>
+                            </div>
+                            <h2 class="text-right text-white"><span id="summaryTotal"></span></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="my-2 my-md-0 card bg-c-green order-card">
+                        <div class="card-body">
+                            <div class="text-white row no-gutters align-items-center">
+                                <h1 class="mx-2"><i class="fa fa-check-circle-o"></i></h1>
+                                <h6>حالات الشفاء </h6>
+                            </div>
+                            <h2 class="text-right text-white"><span id="summaryRecovered"></span></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="my-2 my-md-0 card bg-c-yellow order-card">
+                        <div class="card-body">
+                            <div class="text-white row no-gutters align-items-center">
+                                <h1 class="mx-2"><i class="fa fa-exclamation-triangle"></i></h1>
+                                <h6>الإصابات النشطة </h6>
+                            </div>
+                            <h2 class="text-right text-white"><span id="summaryActive"></span></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="my-2 my-md-0 card bg-c-red order-card">
+                        <div class="card-body">
+                            <div class="text-white row no-gutters align-items-center">
+                                <h1 class="mx-2"><i class="fa fa-minus-circle"></i></h1>
+                                <h6>الوفيات </h6>
+                            </div>
+                            <h2 class="text-right text-white"><span id="summaryDeaths"></span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div id="chart" class="col-md-10 mx-auto"></div>
+        </div>
+        <div class="countries-table my-5">
+            <div class="row">
+                <div class="col-12 col-md-10 mx-auto">
+                    <table id="countries" class="table table-hover table-bordered" data-order='[[ 1, "desc" ]]' data-page-length='25'>
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Country</th>
+                                <th>Total</th>
+                                <th>Recovered</th>
+                                <th>Deaths</th>
+                                <th>Active</th>
+                            </tr>
+                        </thead>
+                        <tbody id="countriesData"></tbody>
+                        <tfoot class="thead-dark">
+                            <tr>
+                                <th>Country</th>
+                                <th>Total</th>
+                                <th>Recovered</th>
+                                <th>Deaths</th>
+                                <th>Active</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="footer navbar navbar-expand-lg navbar-dark bg-purple-inverse-direction">
+        <a class="navbar-brand" href="https://www.facebook.com/mo999dev">Coded By: Mohammad Ahmad</a>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script type="text/javascript" src="js/main.js?v=1.1"></script>
+</body>
+
+</html>
